@@ -34,5 +34,5 @@ textarea {
 
 label{
     font-size: larger;
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
 }
