@@ -1,6 +1,8 @@
+
+
 body{
     font-family: 'Roboto', sans-serif; 
-    background-image: url(../image/bg-img.png);
+    background-image: url(../../image/bg-img.png); 
     background-size:cover;
     color: rgba(25, 52, 94);
 }
@@ -30,7 +32,8 @@ button:hover{
 .photo-content{
     width: 355px;
     height: 355px;
-    background-image: url(../image/matthew-hamilton-tNCH0sKSZbA-unsplash.jpg); 
+    background-image: url(../../image/matthew-hamilton-tNCH0sKSZbA-unsplash.jpg); 
+    /* background-color: chocolate; */
     background-size:cover;
     color: none;
     padding-left: 80px;
