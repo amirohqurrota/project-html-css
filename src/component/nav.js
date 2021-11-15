@@ -24,7 +24,7 @@ export default function Nav() {
                         <Link to="/" className="nav-link mx-3" href="#">ABOUT</Link>
                         </li>
                         <li className="nav-item">
-                        <Link to="/"  className="nav-link mx-3">EXPERIENCE</Link>
+                        <Link to="/news"  className="nav-link mx-3">NEWS</Link>
                         </li>
                         <li className="nav-item">
                         <Link to="/contact-us"  className="nav-link mx-3">CONTACT</Link>

@@ -2,6 +2,7 @@
 import Body from './page/Home/Body';
 import ContactUs from './page/form/contactUs';
 import ReviewMessage from './page/reviewMessage/reviewMessage';
+import NewsPage from './page/news/newsPage';
 import Error from './page/error/error';
 import { render } from "react-dom";
 import {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" index element={<Body/>}/>
         <Route path="/contact-us" index element={<ContactUs/>}/>
         <Route path="/contact-us/message" index element={<ReviewMessage/>}/>
+        <Route path="/news" index element={<NewsPage/>}/>
         <Route  path="*" element={<Error/>}></Route>
       </Routes>
     </BrowserRouter>
