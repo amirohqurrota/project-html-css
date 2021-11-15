@@ -1,0 +1,8 @@
+.containerReview{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: auto;
+    height: 100vh;
+}

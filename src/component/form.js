@@ -1,9 +1,11 @@
 import React from 'react'
 import { useState, useRef } from 'react';
 import validator from 'validator';
+import './form.css'
+import { useNavigate } from "react-router-dom";
 
 export default function Form() {
-
+    let navigate = useNavigate();
 
     const storeData={
         fullName:"",
@@ -18,10 +20,10 @@ export default function Form() {
     let [errName, setErrName] = useState("");
     let [errEmail, setErrEmail] = useState("");
     let [errPhone, setErrPhone] = useState("");
-    //const listError = [errName, errEmail, errPhone]
 
     (function () {
-        'use strict'
+        // 'use strict'
+        console.log("function run")
       
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = document.querySelectorAll('.needs-validation')
@@ -42,11 +44,11 @@ export default function Form() {
       
 
     function localData(){
-        localStorage.setItem("nameValue", storeData.fullName);
-        localStorage.setItem("emailValue", storeData.email);
-        localStorage.setItem("phoneNumValue", storeData.phone);
-        localStorage.setItem("nationalityValue", storeData.nationality);
-        localStorage.setItem("messageValue", storeData.message);
+        localStorage.setItem("nameValue", data.fullName);
+        localStorage.setItem("emailValue", data.email);
+        localStorage.setItem("phoneNumValue", data.phone);
+        localStorage.setItem("nationalityValue", data.nationality);
+        localStorage.setItem("messageValue", data.message);
         //console.log(document.getElementById("fullname").value);
     }
 
@@ -54,7 +56,7 @@ export default function Form() {
         const name= e.target.name;
         const value=e.target.value;
         
-        if (name==="fullname"){
+        if (name==="fullName"){
             if(regexName.test(value)){
                 setErrName("")
             }else{
@@ -82,11 +84,14 @@ export default function Form() {
     }
 
     const handleSubmit = (event)=>{
-        if(errName !== "" && errPhone !== "" && errEmail !== ""){
+        if(errName !== "" || errPhone !== "" || errEmail !== ""){
             alert("terdapat data yang tidak sesuai")
+            console.log("handlesubmit if 1")
             event.preventDefault()
         }else{
-            localData()
+            localData();
+            navigate('/contact-us/message');
+
         }
         
     }
@@ -102,46 +107,44 @@ export default function Form() {
                 <form class="row g-3 needs-validation" novalidate action="review_message.html">
                     <div class="col-md-12">
                     <label for="fullname" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="fullname"  placeholder="Your Full Name Here..." onChange={handleInput} value={storeData.fullName} required />
-                    <div class="invalid-feedback">
-                        Full name cannot be empty
+                    <input type="text" class="form-control" id="fullname" name="fullName" placeholder="Your Full Name Here..." onChange={handleInput} value={data.fullName} required />
+                    <div class="errorMessage">
+                        {errName}
                     </div>
                     </div>
                     <div class="col-md-12">
                     <label for="emailAddress" class="form-label">Email Address</label>
-                    <input type="text" class="form-control" id="emailAddress"  placeholder="Example@domain.com" onChange={handleInput} value={storeData.email} required/>
-                    <div class="invalid-feedback">
-                        Email address cannot be empty
+                    <input type="text" class="form-control" id="emailAddress" name="email"  placeholder="Example@domain.com" onChange={handleInput} value={data.email} required/>
+                    <div class="errorMessage">
+                        {errEmail}
                     </div>
                     </div>
                     <div class="col-md-12">
                     <label for="phoneNumber" class="form-label">Phone Number</label>
-                    <input type="text" class="form-control" id="phoneNumber" placeholder="08573890xxxx" onChange={handleInput} value={storeData.email} required />
-                    <div class="invalid-feedback">
-                        Phone number cannot be empty
+                    <input type="text" class="form-control" id="phoneNumber" name="phone" placeholder="08573890xxxx" onChange={handleInput} value={data.phone} required />
+                    <div class="errorMessage">
+                        {errPhone}
                     </div>
                     </div>
                     <div class="col-md-12">
                     <label for="nationality" class="form-label">Nationality</label>
-                    <select class="form-select" id="nationality" onChange={handleInput} value={storeData.nationality} required >
+                    <select class="form-select" id="nationality" onChange={handleInput} name="nationality" value={data.nationality} required >
                         <option selected value="">Choose...</option>
-                        <option value="1">Indonesia</option>
-                        <option value="2">Brazilian</option>
-                        <option value="3">British</option>
+                        <option value="Indonesia">Indonesia</option>
+                        <option value="Brazilian">Brazilian</option>
+                        <option value="British">British</option>
                     </select>
                     <div class="invalid-feedback">
                         Please select your nationality.
                     </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 message-area">
                         <label for="message" class="form-label">Message</label>
-                        <textarea id="message" class="form-control form-control-sm " rows="5" placeholder="Your Message Here..." required ></textarea><br/>
+                        <textarea id="message" name="message" class="form-control form-control-sm"  rows="5" placeholder="Your Message Here..." onChange={handleInput} value={data.message} required ></textarea><br/>
                     </div>
-                    <button type="submit" class="btn btn-dark rounded-pill col-md-3" onclick={handleSubmit()}>Submit</button>
+                    <button type="submit" class="btn btn-dark rounded-pill col-md-3" onClick={()=>handleSubmit()} >Submit</button>
                 </form>
-
             </div>
-        
         </div>
     )
 }

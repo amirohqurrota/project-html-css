@@ -4,6 +4,11 @@ body{
     color: rgba(25, 52, 94);
     font-family: 'Roboto', sans-serif;
 }
+
+.container-contactUs{
+    height: 100vh;
+    margin: 0;
+}
 .picture-contact{
     background-image:url(../../image/charles-rRWiVQzLm7k-unsplash.jpg);
     background-size: cover;

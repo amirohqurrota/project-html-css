@@ -6,7 +6,7 @@ import "./contactUs.css"
 
 export default function FormPage() {
     return (
-        <div className="row main">
+        <div className="row main container-contactUs">
             <div class="col-sm-5 col p-0 picture-contact d-flex justify-content-center align-content-center">
                 <div class="row container-dark-blue d-flex justify-content-center align-content-center"> 
                 <div class="col"></div>
